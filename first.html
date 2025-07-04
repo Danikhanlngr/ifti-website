@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scan Result of BTPE Islamabad</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 40px;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      font-size: 18px;
+      padding: 10px;
+      margin-top: 10px;
+      width: 90%;
+    }
+    .result {
+      margin-top: 20px;
+      text-align: left;
+      background: #eafbea;
+      padding: 20px;
+      border: 1px solid #b2dfb2;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Scan Result of BTPE Islamabad</h2>
+    <p>Enter your roll number</p>
+    <input type="text" id="rollInput" placeholder="Example: 2027285">
+    <button onclick="verifyResult()">Verify</button><div id="output" class="result" style="display: none;"></div>
+
+  </div>  <script>
+    const resultData = {
+      "2027285": {
+        name: "Danish Ali",
+        s_d_w: "Abid",
+        regno: "ITPE/ISB/DIT/12947",
+        course: "DIPLOMA IN INFORMATION TECHNOLOGY (DIT)",
+        duration: "1 YEAR",
+        session: "2020-2021",
+        totalMarks: "1400",
+        obtainedMarks: "1180",
+        grade: "A",
+        institute: "Global Technical Institute Islamabad"
+      }
+    };
+
+    function verifyResult() {
+      const roll = document.getElementById('rollInput').value.trim();
+      const output = document.getElementById('output');
+
+      if (resultData[roll]) {
+        const data = resultData[roll];
+        output.innerHTML = `
+          <strong>Name:</strong> ${data.name}<br>
+          <strong>S/D/W of:</strong> ${data.s_d_w}<br>
+          <strong>Registration No:</strong> ${data.regno}<br>
+          <strong>Trade Course:</strong> ${data.course}<br>
+          <strong>Duration:</strong> ${data.duration}<br>
+          <strong>Session:</strong> ${data.session}<br>
+          <strong>Total Marks:</strong> ${data.totalMarks}<br>
+          <strong>Marks Obtained:</strong> ${data.obtainedMarks}<br>
+          <strong>Grade:</strong> ${data.grade}<br>
+          <strong>Institute:</strong> ${data.institute}
+        `;
+        output.style.display = 'block';
+      } else {
+        output.innerHTML = 'Sorry! No result found for this roll number.';
+        output.style.display = 'block';
+      }
+    }
+  </script></body>
+</html>
